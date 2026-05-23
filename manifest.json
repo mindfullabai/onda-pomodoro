@@ -1,0 +1,28 @@
+{
+  "id": "your-org.your-plugin-id",
+  "name": "Your Plugin Name",
+  "version": "0.1.0",
+  "description": "Short, user-facing description of what this plugin does.",
+  "author": {
+    "name": "Your Name",
+    "email": "you@example.com",
+    "url": "https://example.com"
+  },
+  "main": "dist/main.js",
+  "capabilities": [
+    "commands",
+    "notifications",
+    "storage"
+  ],
+  "activationEvents": ["onStartup"],
+  "contributes": {
+    "commands": [
+      {
+        "id": "your-org.your-plugin-id.hello",
+        "title": "Say Hello",
+        "category": "Your Plugin"
+      }
+    ]
+  },
+  "envVars": []
+}

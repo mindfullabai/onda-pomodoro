@@ -1,0 +1,39 @@
+{
+  "name": "@your-org/onda-plugin-yourname",
+  "version": "0.1.0",
+  "description": "An Onda terminal plugin built from the official template.",
+  "private": false,
+  "license": "MIT",
+  "author": {
+    "name": "Your Name",
+    "email": "you@example.com",
+    "url": "https://example.com"
+  },
+  "homepage": "https://onda.sh",
+  "main": "dist/main.js",
+  "files": [
+    "dist",
+    "manifest.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "echo \"(no tests yet) — add vitest or your test runner of choice\" && exit 0",
+    "pack": "npm run build && node scripts/pack.mjs",
+    "typecheck": "tsc --noEmit",
+    "link:local": "node scripts/link-local.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.0"
+  },
+  "keywords": [
+    "onda",
+    "onda-plugin",
+    "terminal",
+    "plugin"
+  ]
+}

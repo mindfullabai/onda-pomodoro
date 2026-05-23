@@ -1,0 +1,15 @@
+{
+  "id": "example.hello-world",
+  "name": "Hello World",
+  "version": "1.0.0",
+  "description": "Minimal Onda plugin: registers a command that shows a notification.",
+  "author": { "name": "Onda Plugin Template" },
+  "main": "main.js",
+  "capabilities": ["commands", "notifications"],
+  "activationEvents": ["onStartup"],
+  "contributes": {
+    "commands": [
+      { "id": "example.hello-world.greet", "title": "Hello World: Greet", "category": "Examples" }
+    ]
+  }
+}
