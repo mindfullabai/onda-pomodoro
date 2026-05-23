@@ -8,6 +8,7 @@
     "url": "https://github.com/mindfullabai/onda-pomodoro"
   },
   "homepage": "https://github.com/mindfullabai/onda-pomodoro",
+  "icon": "icon.png",
   "main": "dist/main.js",
   "capabilities": [
     "commands",

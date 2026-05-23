@@ -34,6 +34,15 @@ const zipPath = join(outDir, zipName);
 const args = ['-r', zipPath, 'manifest.json', 'dist/main.js'];
 if (existsSync(join(root, 'README.md'))) args.push('README.md');
 if (existsSync(join(root, 'LICENSE'))) args.push('LICENSE');
+// it: includi icona/asset top-level se referenziati nel manifest (icon, screenshots).
+if (manifest.icon && existsSync(join(root, manifest.icon))) {
+  args.push(manifest.icon);
+}
+if (Array.isArray(manifest.screenshots)) {
+  for (const s of manifest.screenshots) {
+    if (typeof s === 'string' && existsSync(join(root, s))) args.push(s);
+  }
+}
 
 const res = spawnSync('zip', args, { cwd: root, stdio: 'inherit' });
 if (res.status !== 0) {
