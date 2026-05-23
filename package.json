@@ -1,15 +1,18 @@
 {
-  "name": "@your-org/onda-plugin-yourname",
-  "version": "0.1.0",
-  "description": "An Onda terminal plugin built from the official template.",
+  "name": "@mindfullabai/onda-pomodoro",
+  "version": "1.0.0",
+  "description": "Pomodoro timer plugin for Onda terminal — focus sprints with status-bar countdown and notifications.",
   "private": false,
   "license": "MIT",
   "author": {
-    "name": "Your Name",
-    "email": "you@example.com",
-    "url": "https://example.com"
+    "name": "Mario Mosca / Mindful Lab AI",
+    "url": "https://github.com/mindfullabai/onda-pomodoro"
   },
-  "homepage": "https://onda.sh",
+  "homepage": "https://github.com/mindfullabai/onda-pomodoro",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mindfullabai/onda-pomodoro.git"
+  },
   "main": "dist/main.js",
   "files": [
     "dist",
@@ -20,7 +23,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "test": "echo \"(no tests yet) — add vitest or your test runner of choice\" && exit 0",
+    "test": "echo \"(no tests yet)\" && exit 0",
     "pack": "npm run build && node scripts/pack.mjs",
     "typecheck": "tsc --noEmit",
     "link:local": "node scripts/link-local.mjs"
@@ -34,6 +37,10 @@
     "onda",
     "onda-plugin",
     "terminal",
-    "plugin"
+    "plugin",
+    "pomodoro",
+    "productivity",
+    "timer",
+    "focus"
   ]
 }

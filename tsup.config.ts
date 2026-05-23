@@ -22,4 +22,9 @@ export default defineConfig({
   minify: false,
   treeshake: true,
   noExternal: [/.*/], // bundle everything — Worker can't resolve node_modules
+  // it: tsup default per IIFE e' `main.global.js`. Onda manifest punta a `main.js`,
+  // quindi forziamo l'estensione semplice.
+  outExtension() {
+    return { js: '.js' };
+  },
 });

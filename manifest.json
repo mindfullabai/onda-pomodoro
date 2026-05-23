@@ -1,28 +1,73 @@
 {
-  "id": "your-org.your-plugin-id",
-  "name": "Your Plugin Name",
-  "version": "0.1.0",
-  "description": "Short, user-facing description of what this plugin does.",
+  "id": "sh.onda.pomodoro",
+  "name": "Pomodoro",
+  "version": "1.0.0",
+  "description": "Focus timer with 25/5 work-break cycles. Status-bar countdown + native notifications.",
   "author": {
-    "name": "Your Name",
-    "email": "you@example.com",
-    "url": "https://example.com"
+    "name": "Mario Mosca / Mindful Lab AI",
+    "url": "https://github.com/mindfullabai/onda-pomodoro"
   },
+  "homepage": "https://github.com/mindfullabai/onda-pomodoro",
   "main": "dist/main.js",
   "capabilities": [
     "commands",
+    "statusbar",
     "notifications",
-    "storage"
+    "storage",
+    "keybindings"
   ],
   "activationEvents": ["onStartup"],
   "contributes": {
     "commands": [
       {
-        "id": "your-org.your-plugin-id.hello",
-        "title": "Say Hello",
-        "category": "Your Plugin"
+        "id": "sh.onda.pomodoro.start",
+        "title": "Start",
+        "category": "Pomodoro",
+        "keybinding": { "mac": "cmd+shift+p" }
+      },
+      {
+        "id": "sh.onda.pomodoro.pause",
+        "title": "Pause/Resume",
+        "category": "Pomodoro"
+      },
+      {
+        "id": "sh.onda.pomodoro.reset",
+        "title": "Reset",
+        "category": "Pomodoro"
+      },
+      {
+        "id": "sh.onda.pomodoro.skipBreak",
+        "title": "Skip Break",
+        "category": "Pomodoro"
+      }
+    ],
+    "statusBar": [
+      {
+        "id": "sh.onda.pomodoro.indicator",
+        "alignment": "right"
       }
     ]
+  },
+  "settings": {
+    "workDuration": {
+      "type": "number",
+      "default": 25,
+      "min": 1,
+      "max": 90,
+      "description": "Work session length (minutes)"
+    },
+    "breakDuration": {
+      "type": "number",
+      "default": 5,
+      "min": 1,
+      "max": 30,
+      "description": "Break length (minutes)"
+    },
+    "enableNotifications": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show notifications on session end"
+    }
   },
   "envVars": []
 }
