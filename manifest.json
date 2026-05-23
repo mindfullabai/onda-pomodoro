@@ -1,7 +1,7 @@
 {
   "id": "sh.onda.pomodoro",
   "name": "Pomodoro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Focus timer with 25/5 work-break cycles. Status-bar countdown + native notifications.",
   "author": {
     "name": "Mario Mosca / Mindful Lab AI",
@@ -39,6 +39,11 @@
       {
         "id": "sh.onda.pomodoro.skipBreak",
         "title": "Skip Break",
+        "category": "Pomodoro"
+      },
+      {
+        "id": "sh.onda.pomodoro.stop",
+        "title": "Stop",
         "category": "Pomodoro"
       }
     ],

@@ -18,7 +18,8 @@ No window switching. No external timer app. Just focus.
 - 📊 **Live status-bar countdown** — `MM:SS` with contextual icon (🍅 work / ☕ break / ⏸ paused)
 - 🔔 **Native notifications** at every transition
 - ⌨️ **Cmd+Shift+P** keybinding to start a sprint (macOS)
-- ⏯️ **Pause / Resume / Reset / Skip Break** commands
+- ⏯️ **Pause / Resume / Reset / Skip Break / Stop** commands
+- 🖱️ **Smart-toggle status-bar click** — click does the most-obvious action for the current state (idle→start, running→pause, paused→resume, break→skip)
 - ⚙️ **Configurable durations** via persistent settings
 - 🚫 **Zero dependencies** — single bundled Worker, ~5KB minified
 
@@ -37,7 +38,7 @@ git clone https://github.com/mindfullabai/onda-pomodoro.git
 cd onda-pomodoro
 npm install
 npm run build
-npm run pack          # produces release/sh.onda.pomodoro-1.0.0.zip
+npm run pack          # produces release/sh.onda.pomodoro-1.0.1.zip
 ```
 
 Then sideload the zip into Onda via **Plugins → Install from file**, or extract it into `~/.config/onda/plugins/sh.onda.pomodoro/`.
@@ -52,8 +53,9 @@ After installation the plugin auto-activates on Onda startup.
 | `Pomodoro: Pause/Resume`     | —                | Freeze / resume the current timer             |
 | `Pomodoro: Reset`            | —                | Cancel everything, return to idle             |
 | `Pomodoro: Skip Break`       | —                | End the current break immediately             |
+| `Pomodoro: Stop`             | —                | Stop the timer and notify (Reset is silent)    |
 
-All commands are also accessible from the Command Palette (`⌘+Shift+P` after typing `Pomodoro:`), and the status-bar tomato is clickable to start a sprint when idle.
+All commands are also accessible from the Command Palette (`⌘+Shift+P` after typing `Pomodoro:`). The status-bar tomato is **smart-toggle**: clicking it picks the most obvious action for the current state — start when idle, pause when working, resume when paused, skip when on break.
 
 ### Status-bar states
 
@@ -98,6 +100,12 @@ npm run dev    # tsup watch mode
 ```
 
 Open an issue or PR on [GitHub](https://github.com/mindfullabai/onda-pomodoro).
+
+## Changelog
+
+### v1.0.1 — 2026-05-23
+- Smart-toggle on status-bar click (idle→start, running→pause, paused→resume, break→skip)
+- New "Pomodoro: Stop" command (Reset is silent, Stop notifies)
 
 ## License
 

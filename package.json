@@ -1,6 +1,6 @@
 {
   "name": "@mindfullabai/onda-pomodoro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pomodoro timer plugin for Onda terminal — focus sprints with status-bar countdown and notifications.",
   "private": false,
   "license": "MIT",

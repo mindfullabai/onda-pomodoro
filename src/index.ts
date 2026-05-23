@@ -50,16 +50,17 @@ const plugin: OndaPluginEntry = {
     // it: 1. carica settings da storage (fallback ai default)
     await loadSettings(onda);
 
-    // it: 2. registra status-bar item (start vuoto/idle)
+    // it: 2. registra status-bar item (start vuoto/idle). Il click va al comando
+    // toggle che decide cosa fare in base allo state corrente.
     await onda.statusBar.addItem({
       id: STATUS_ITEM_ID,
       text: idleText(),
       tooltip: 'Pomodoro — click to start',
       position: 'right',
-      onClick: `${PLUGIN_ID}.start`,
+      onClick: `${PLUGIN_ID}.toggle`,
     });
 
-    // it: 3. registra i 4 comandi
+    // it: 3. registra i comandi
     onda.commands.register(`${PLUGIN_ID}.start`, {
       title: 'Start',
       category: 'Pomodoro',
@@ -79,6 +80,17 @@ const plugin: OndaPluginEntry = {
       title: 'Skip Break',
       category: 'Pomodoro',
       handler: () => cmdSkipBreak(),
+    });
+    onda.commands.register(`${PLUGIN_ID}.stop`, {
+      title: 'Stop',
+      category: 'Pomodoro',
+      handler: () => cmdStop(),
+    });
+    // it: comando interno per click su status-bar (smart-toggle)
+    onda.commands.register(`${PLUGIN_ID}.toggle`, {
+      title: 'Toggle (status-bar click)',
+      category: 'Pomodoro',
+      handler: () => cmdToggle(),
     });
   },
 
@@ -144,6 +156,35 @@ async function cmdSkipBreak() {
   state = { kind: 'idle' };
   render();
   notify('info', 'Break skipped', 'Ready for another focus sprint?');
+}
+
+async function cmdStop() {
+  // it: come reset ma con notifica esplicita user-initiated.
+  stopTicker();
+  state = { kind: 'idle' };
+  render();
+  notify('info', 'Pomodoro stopped.', 'Timer cleared. Start a new sprint when ready.');
+}
+
+async function cmdToggle() {
+  // it: smart-toggle invocato dal click sulla status-bar. Sostituisce il
+  // comando piu' ovvio per lo state corrente.
+  if (state.kind === 'idle') {
+    startWork();
+    return;
+  }
+  if (state.paused) {
+    // it: paused (work o break) → resume
+    await cmdPauseResume();
+    return;
+  }
+  if (state.kind === 'work') {
+    // it: work running → pause
+    await cmdPauseResume();
+    return;
+  }
+  // it: break running → skip
+  await cmdSkipBreak();
 }
 
 // ============================================================================
